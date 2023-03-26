@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Enter Details</h1>
+            <form method="POST" action="" id="my_form" onsubmit="validate()">
+                <div class="content">
+                    <div class="input-field" id="name_field">
+                        Name :
+
+                        <input class="form-buts" type="text" placeholder="Name." id="name">
+                    </div>
+
+                    <div class="input-field" id="Email_field">
+                        Email :
+
+                        <input class="form-buts" type="email" id="email" placeholder="E-mail">
+                    </div>
+
+                    <div class="input-field" id="Phone_field">
+                        Phone No. :
+
+                        <input class="form-buts" type="tel" id="phone" placeholder="Phone no." pattern="[0-9]{10}"
+                            maxlength="10">
+                    </div>
+                    <div class="input-field" id="age_field">
+                        Age :
+
+                        <input class="form-buts" type="text" placeholder="Age" id="name" pattern="[0-9]{2}">
+                    </div>
+
+                    <div class="input-field" id="clg_field">
+                        College Name :
+                        <select class="drop-down" placeholder="Select College" id="clg">
+                            <option value="Select College" selected disabled>Select College</option>
+                            <option value="VIT Vellore">VIT Vellore</option>
+                            <option value="VIT Chennai">VIT Chennai</option>
+                            <option value="IIT Madras">IIT Madras</option>
+                            <option value="IIT Kharagpur">IIT Kharagpur</option>
+                            <option value="IIT Kanpur">IIT Kanpur</option>
+                            <option value="IIT Bombay">IIT Bombay</option>
+                            <option value="IIT Roorkee">IIT Roorkee</option>
+                            <option value="IIT Kanpur">IIT Kanpur</option>
+                            <option value="IIT Delhi">IIT Delhi</option>
+                            <option value="IIT Ropar">IIT Ropar</option>
+                            <option value="IIT Gandhinagar">IIT Gandhinagar</option>
+                        </select>
+                    </div>
+
+                    <div class="input-field" id="branch_field">
+                        Branch :
+
+                        <select class="drop-down" placeholder="Select Branch" id="branch">
+                            <option value="Select Branch" selected disabled>Select Branch</option>
+                            <option value="Aerospace Engineering">Aerospace Engineering</option>
+                            <option value="Chemical Engineering">Chemical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Metallurgical Engineering & Materials Science">Metallurgical Engineering &
+                                Materials
+                                Science</option>
+                            <option value="Physics">Physics</option>
+                        </select>
+                    </div>
+
+                    <div class="input-field" id="year_field">
+                        Passing year:
+
+                        <select class="drop-down" id="ddlYears" type="text/javascript">
+                            <option value="Select Year" selected disabled>Select Year</option>
+                        </select>
+                    </div>
+
+                    <div class="input-field" id="city_field">
+                        City :
+
+                        <select class="drop-down" placeholder="Enter the City" id="city">
+                            <option value="Select City" selected disabled>Select City</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Banglore">Banglore</option>
+                            <option value="Surat">Surat</option>
+                            <option value="Meerut">Meerut</option>
+                            <option value="Bhilai">Bhilai</option>
+                            <option value="Ayodhaya">Ayodhaya</option>
+                            <option value="Lucknow">Lucknow</option>
+                            <option value="Mysore">Mysore</option>
+                        </select>
+                    </div>
+
+                    <div  id="skill_field">
+                        Skill :
+
+                        <div id="survey_options">
+                            <input type="text" name="survey_options[]" class="survey_options" size="50" placeholder="Skill">
+                            <input type="text" name="survey_options[]" class="survey_options" size="50" placeholder="Skill">
+                            <input type="text" name="survey_options[]" class="survey_options" size="50" placeholder="Another Field">
+                          </div>
+                        <div class="control">
+                            <a href="#" id="add_more_fields"><i class="fa fa-plus"></i>Add
+                                More</a>
+                            <a href="#" id="remove_fields"><i class="fa fa-minus"></i>Remove</a>
+                        </div>
+                    </div>
+
+                    <!-- type:add wala -->
+                    <div class="input-field" id="gender_field">
+                        Gender:
+
+                        <input type="radio" name="Gender">Female <input type="radio" name="Gender">Male
+                    </div>
+
+
+                    <div class="input-field" id="link_field">
+                        Project :
+                        <input type="url" placeholder="Github link or website link">
+                    </div>
+                    <br>
+                    <div class="btn-filed">
+
+                        <button type="button" value="Submit now" onclick="show_alert();">Submit</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("ddlYears");
+
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+
+        //Loop and add the Year values to DropDownList.
+        for (var i = 1950; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+
+    var add_more_fields = document.getElementById('add_more_fields');
+    add_more_fields.onclick = function () {
+        newField.setAttribute('type', 'text');
+        newField.setAttribute('name', 'survey_option[]');
+        newField.setAttribute('class', 'survey_options');
+        newField.setAttribute('size', 50);
+        newField.setAttribute('placeholder', 'Skill');
+        survey_options.appendChild(newField);
+    }
+
+    // function adding_field() {
+    //     var newField = document.createElement('input');
+    //     newField.setAttribute('type', 'text');
+    //     newField.setAttribute('name', 'survey_option[]');
+    //     newField.setAttribute('class', 'survey_options');
+    //     newField.setAttribute('size', 50);
+    //     newField.setAttribute('placeholder', 'Skill');
+    //     survey_options.appendChild(newField);
+    // }
+    function removing_field() {
+        var input_tags = survey_option.getElementsByClass('survey_options');
+        if (input_tags.length > 2) {
+            survey_options.removeChild(input_tags[(input_tags - 1)]);
+        }
+
+    }
+</script>
+
+</html>
